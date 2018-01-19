@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC
+        "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+
+    <!-- !!!! Driver Class Path !!!! -->
+    <classPathEntry location="C:\Users\Xu Wei\.m2\repository\mysql\mysql-connector-java\5.1.42\mysql-connector-java-5.1.42.jar"/>
+
+    <context id="context" targetRuntime="MyBatis3">
+        <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"></plugin>
+
+        <commentGenerator>
+            <property name="suppressAllComments" value="false"/>
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+
+        <!-- !!!! Database Configuratiot_rechargens !!!! -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/vote" userId="root" password=""/>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- !!!! Model Configurations !!!! -->
+        <javaModelGenerator targetPackage="com.example.demo.domain" targetProject="src/main/java">
+            <property name="enableSubPackages" value="false"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!-- !!!! Mapper XML Configurations !!!! -->
+        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources">
+            <property name="enableSubPackages" value="false"/>
+        </sqlMapGenerator>
+
+        <!-- !!!! Mapper Interface Configurations !!!! -->
+        <javaClientGenerator targetPackage="com.example.demo.mapper" targetProject="src/main/java" type="XMLMAPPER">
+            <property name="enableSubPackages" value="false"/>
+        </javaClientGenerator>
+
+        <table tableName="vote" domainObjectName="Vote" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"/>
+
+        <table tableName="user" domainObjectName="User" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"/>
+        <table tableName="vote_option" domainObjectName="VoteOption" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"/>
+        <table tableName="vote_record" domainObjectName="VoteRecord" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"/>
+
+
+
+
+
+    </context>
+</generatorConfiguration>
