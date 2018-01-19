@@ -17,6 +17,12 @@
     -->
     vote_option_id, vote_id, option_value
   </sql>
+  <select id="selectListvoteOptionByvoteId" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from vote_option
+    where vote_id=#{voteId}
+  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     <!--
       WARNING - @mbg.generated

@@ -17,6 +17,14 @@
     -->
     vote_id, vote_title, create_by
   </sql>
+  <select id="getAllVote" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from vote
+    <if test="voteId !=null and voteId !='' ">
+      where vote_id = #{voteId,jdbcType=BIGINT}
+    </if>
+  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     <!--
       WARNING - @mbg.generated
