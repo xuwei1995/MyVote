@@ -1,7 +1,15 @@
 $(document).ready(function () {
 
-
 });
+var success="success"
+function equals(str1,str2) {
+    if(str1==str2)
+    {
+        return true
+    }else {
+        return false
+    }
+}
 
 
 function login() {
@@ -14,18 +22,18 @@ function login() {
         var param=$('#loginForm').serializeArray()
         $.ajax({
             type: "POST",
-            url:ctx+"/login",
+            url:ctx+"/loginDo",
             data:param,
             success:function (data) {
-              console.log(data.status)
+                layer.msg(data.msg)
+                if(equals(success,data.status)){
+                    window.location.href="index";
+                }
             },
             error:function (data) {
-                console.log(data.status)
+                layer.alert("服务器异常")
             }
         })
     }
 
 }
-$("#btn_login").on('click',function () {
-
-});

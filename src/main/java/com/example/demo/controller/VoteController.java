@@ -1,18 +1,17 @@
 package com.example.demo.controller;
 
-import com.example.demo.domain.Vote;
-import com.example.demo.domain.VoteOption;
-import com.example.demo.domain.VoteRecord;
-import com.example.demo.domain.VoteRecordKey;
+import com.example.demo.domain.*;
 import com.example.demo.mapper.VoteOptionMapper;
 import com.example.demo.mapper.VoteRecordMapper;
 import com.example.demo.service.VoteService;
 import com.example.demo.util.Helper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Map;
 
@@ -21,6 +20,17 @@ public class VoteController {
     @Autowired
     private VoteService voteService;
 
+    @RequestMapping("index")
+    public String index(HttpSession session,Model model){
+        try {
+            User user= (User) session.getAttribute("user");
+            model.addAttribute("user",user);
+            return "index";
+        }catch (Exception e)
+        {
+             return  "500";
+        }
+    }
 
     @RequestMapping("getVote")
     @ResponseBody
